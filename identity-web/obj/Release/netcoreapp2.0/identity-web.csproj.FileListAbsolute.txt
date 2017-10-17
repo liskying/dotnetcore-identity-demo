@@ -1,0 +1,12 @@
+F:\DotCore-App\identity-demo\identity-web\bin\Release\netcoreapp2.0\identity-web.deps.json
+F:\DotCore-App\identity-demo\identity-web\bin\Release\netcoreapp2.0\identity-web.runtimeconfig.json
+F:\DotCore-App\identity-demo\identity-web\bin\Release\netcoreapp2.0\identity-web.runtimeconfig.dev.json
+F:\DotCore-App\identity-demo\identity-web\bin\Release\netcoreapp2.0\identity-web.dll
+F:\DotCore-App\identity-demo\identity-web\bin\Release\netcoreapp2.0\identity-web.pdb
+F:\DotCore-App\identity-demo\identity-web\obj\Release\netcoreapp2.0\identity-web.csproj.CoreCompileInputs.cache
+F:\DotCore-App\identity-demo\identity-web\obj\Release\netcoreapp2.0\identity-web.AssemblyInfoInputs.cache
+F:\DotCore-App\identity-demo\identity-web\obj\Release\netcoreapp2.0\identity-web.AssemblyInfo.cs
+F:\DotCore-App\identity-demo\identity-web\obj\Release\netcoreapp2.0\identity-web.dll
+F:\DotCore-App\identity-demo\identity-web\obj\Release\netcoreapp2.0\identity-web.pdb
+F:\DotCore-App\identity-demo\identity-web\obj\Release\netcoreapp2.0\identity-web.csprojResolveAssemblyReference.cache
+F:\DotCore-App\identity-demo\identity-web\bin\Release\netcoreapp2.0\db\identity-demo.db
