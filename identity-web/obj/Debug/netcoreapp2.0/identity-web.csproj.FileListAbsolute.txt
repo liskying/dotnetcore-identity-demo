@@ -9,4 +9,3 @@ F:\DotCore-App\identity-demo\identity-web\bin\Debug\netcoreapp2.0\identity-web.d
 F:\DotCore-App\identity-demo\identity-web\bin\Debug\netcoreapp2.0\identity-web.pdb
 F:\DotCore-App\identity-demo\identity-web\obj\Debug\netcoreapp2.0\identity-web.dll
 F:\DotCore-App\identity-demo\identity-web\obj\Debug\netcoreapp2.0\identity-web.pdb
-f:\DotCore-App\identity-demo\identity-web\bin\Debug\netcoreapp2.0\db\identity-demo.db
