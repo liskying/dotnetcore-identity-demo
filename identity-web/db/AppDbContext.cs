@@ -28,7 +28,7 @@ namespace identity_web.db
         public DbSet<TyRole> Roles { get; set; }
 
         /// <summary>
-        /// ���캯��
+        /// 构造函数
         /// </summary>
         /// <param name="options"></param>
         public AppDbContext(DbContextOptions<AppDbContext> options)
