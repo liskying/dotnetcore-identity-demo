@@ -10,11 +10,13 @@ using identity_web.db.domain;
 using identity_web.db;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration.UserSecrets;
 
 namespace identity_web
 {
     public class Startup
     {
+        //string _testSecret = null;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -25,16 +27,25 @@ namespace identity_web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(options =>
-                    options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            //_testSecret = Configuration["MySecret"];
 
-            services.AddIdentity<TyUser, TyRole>()
-                .AddEntityFrameworkStores<AppDbContext>()
-                .AddDefaultTokenProviders();
+            services.AddDbContext<AppDbContext>(options =>
+            {
+                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
+            });
+
+            services.AddIdentity<TyUser, TyRole>(
+            //    config =>            {
+            //    //config.SignIn.RequireConfirmedEmail = true;
+            //    config.SignIn.RequireConfirmedEmail = false;
+            //}
+            )
+            .AddEntityFrameworkStores<AppDbContext>()
+            .AddDefaultTokenProviders();
 
             services.Configure<IdentityOptions>(options =>
             {
-                // Password settings
+                // 密码设置
                 options.Password.RequireDigit = false;
                 options.Password.RequiredLength = 8;
                 options.Password.RequireNonAlphanumeric = false;
@@ -42,27 +53,30 @@ namespace identity_web
                 options.Password.RequireLowercase = false;
                 options.Password.RequiredUniqueChars = 6;
 
-                // Lockout settings
+                // 锁定设置
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
                 options.Lockout.MaxFailedAccessAttempts = 10;
                 options.Lockout.AllowedForNewUsers = true;
 
-                // User settings
+                // 用户设置
                 options.User.RequireUniqueEmail = true;
             });
 
             services.ConfigureApplicationCookie(options =>
             {
-                // Cookie settings
+                // Cookie设置
                 options.Cookie.HttpOnly = true;
                 options.Cookie.Expiration = TimeSpan.FromDays(150);
-                options.LoginPath = "/Account/Login"; // If the LoginPath is not set here, ASP.NET Core will default to /Account/Login
-                options.LogoutPath = "/Account/Logout"; // If the LogoutPath is not set here, ASP.NET Core will default to /Account/Logout
-                options.AccessDeniedPath = "/Account/AccessDenied"; // If the AccessDeniedPath is not set here, ASP.NET Core will default to /Account/AccessDenied
+                options.LoginPath = "/Account/Login"; // 登录
+                options.LogoutPath = "/Account/Logout"; // 退出
+                options.AccessDeniedPath = "/Account/AccessDenied"; //拒绝访问
                 options.SlidingExpiration = true;
             });
-
+            //邮件组件
+            //services.AddTransient<IEmailSender, EmailSender>();
             services.AddMvc();
+            //services.Configure<AuthMessageSenderOptions>(Configuration);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

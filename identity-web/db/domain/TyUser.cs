@@ -10,5 +10,6 @@ namespace identity_web.db.domain
     /// </summary>
     public class TyUser : Microsoft.AspNetCore.Identity.IdentityUser
     {
+
     }
 }
