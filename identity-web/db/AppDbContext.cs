@@ -6,29 +6,29 @@ using identity_web.db.domain;
 namespace identity_web.db
 {
     /// <summary>
-    /// DBÉÏÏÂÎÄ
+    /// Dbä¸Šä¸‹æ–‡
     /// </summary>
     public class AppDbContext : DbContext
     {
         /// <summary>
-        /// Ìû×Ó
+        /// åšå®¢
         /// </summary>
         public DbSet<Blog> Blogs { get; set; }
         /// <summary>
-        /// ÆÀÂÛ
+        /// è¯„è®º
         /// </summary>
         public DbSet<Post> Posts { get; set; }
         /// <summary>
-        /// ÓÃ»§
+        /// ç”¨æˆ·
         /// </summary>
         public DbSet<TyUser> Users { get; set; }
         /// <summary>
-        /// ½ÇÉ«
+        /// è§’è‰²
         /// </summary>
         public DbSet<TyRole> Roles { get; set; }
 
         /// <summary>
-        /// ¹¹Ôìº¯Êı
+        /// ï¿½ï¿½ï¿½ìº¯ï¿½ï¿½
         /// </summary>
         /// <param name="options"></param>
         public AppDbContext(DbContextOptions<AppDbContext> options)

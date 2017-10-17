@@ -1,0 +1,13 @@
+F:\DotCore-App\identity-demo\identity-test\bin\Debug\netcoreapp2.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+F:\DotCore-App\identity-demo\identity-test\bin\Debug\netcoreapp2.0\identity-test.deps.json
+F:\DotCore-App\identity-demo\identity-test\bin\Debug\netcoreapp2.0\identity-test.runtimeconfig.json
+F:\DotCore-App\identity-demo\identity-test\bin\Debug\netcoreapp2.0\identity-test.runtimeconfig.dev.json
+F:\DotCore-App\identity-demo\identity-test\bin\Debug\netcoreapp2.0\identity-test.dll
+F:\DotCore-App\identity-demo\identity-test\bin\Debug\netcoreapp2.0\identity-test.pdb
+F:\DotCore-App\identity-demo\identity-test\obj\Debug\netcoreapp2.0\identity-test.csproj.CoreCompileInputs.cache
+F:\DotCore-App\identity-demo\identity-test\obj\Debug\netcoreapp2.0\identity-test.AssemblyInfoInputs.cache
+F:\DotCore-App\identity-demo\identity-test\obj\Debug\netcoreapp2.0\identity-test.AssemblyInfo.cs
+F:\DotCore-App\identity-demo\identity-test\obj\Debug\netcoreapp2.0\identity-test.dll
+F:\DotCore-App\identity-demo\identity-test\obj\Debug\netcoreapp2.0\identity-test.pdb
+F:\DotCore-App\identity-demo\identity-test\bin\Debug\netcoreapp2.0\xunit.runner.reporters.netcoreapp10.dll
+F:\DotCore-App\identity-demo\identity-test\bin\Debug\netcoreapp2.0\xunit.runner.utility.netcoreapp10.dll
