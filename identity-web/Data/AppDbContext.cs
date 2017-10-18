@@ -51,6 +51,7 @@ namespace identity_web.Data
 
             base.OnModelCreating(builder);
             
+            
             builder.Entity<Post>().HasKey(e => e.Id);
             builder.Entity<Blog>().HasKey(e => e.Id);
             builder.Entity<TyUser>().HasKey(e => e.Id);
@@ -59,6 +60,7 @@ namespace identity_web.Data
             builder.Entity<TyRoleClaim>().HasKey(e => e.Id);
             builder.Entity<TyUserClaim>().HasKey(e => e.Id);
             builder.Entity<TyUserToken>().HasKey(e => e.Id);
+
 
             builder.Entity<Post>().Property(e=>e.Id).HasMaxLength(36);
             builder.Entity<Blog>().Property(e=>e.Id).HasMaxLength(36);
