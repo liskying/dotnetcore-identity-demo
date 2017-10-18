@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using identity_web.db.domain;
-using identity_web.db;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Configuration.UserSecrets;
+using identity_web.Data;
+using identity_web.Models;
+using identity_web.Services;
+using identity_web.Data.Domain;
+using Microsoft.Extensions.Logging;
 
 namespace identity_web
 {
     public class Startup
     {
-        //string _testSecret = null;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -27,28 +28,19 @@ namespace identity_web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //_testSecret = Configuration["MySecret"];
-
-            var connStr=Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<AppDbContext>(options =>
-            {
-                options.UseSqlite(connStr);
-            });
+                options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<TyUser, TyRole>(
-            //    config =>            {
-            //    //config.SignIn.RequireConfirmedEmail = true;
-            //    config.SignIn.RequireConfirmedEmail = false;
-            //}
-            )
-            .AddEntityFrameworkStores<AppDbContext>()
-            .AddDefaultTokenProviders();
+            services.AddIdentity<TyUser, TyRole>()
+                .AddEntityFrameworkStores<AppDbContext>()
+                .AddDefaultTokenProviders();
+
 
             services.Configure<IdentityOptions>(options =>
             {
                 // 密码设置
                 options.Password.RequireDigit = false;
-                options.Password.RequiredLength = 8;
+                options.Password.RequiredLength = 6;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequireLowercase = false;
@@ -73,19 +65,22 @@ namespace identity_web
                 options.AccessDeniedPath = "/Account/AccessDenied"; //拒绝访问
                 options.SlidingExpiration = true;
             });
-            //邮件组件
-            //services.AddTransient<IEmailSender, EmailSender>();
-            services.AddMvc();
-            //services.Configure<AuthMessageSenderOptions>(Configuration);
 
+            // Add application services.
+            services.AddTransient<IEmailSender, EmailSender>();
+
+            services.AddMvc();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+          // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddDebug();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
             else
             {

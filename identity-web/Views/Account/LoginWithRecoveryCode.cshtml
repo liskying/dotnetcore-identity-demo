@@ -1,0 +1,27 @@
+﻿@model LoginWithRecoveryCodeViewModel
+@{
+    ViewData["Title"] = "恢复码登录";
+}
+
+<h2>@ViewData["Title"]</h2>
+<hr />
+<p>
+    您已请求使用恢复码登录。在您提供之前，这个登录将不会被记住.一个身份验证的应用程序的代码在登录或禁用2fa并重新登录.
+</p>
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RecoveryCode"></label>
+                <input asp-for="RecoveryCode" class="form-control" autocomplete="off" />
+                <span asp-validation-for="RecoveryCode" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-default">登录</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

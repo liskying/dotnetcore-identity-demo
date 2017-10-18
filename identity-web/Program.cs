@@ -14,29 +14,24 @@ namespace identity_web
     {
         public static void Main(string[] args)
         {
+            BuildWebHost(args).Run();
+        }
+
+        public static IWebHost BuildWebHost(string[] args)
+        {
             var config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("hosting.json", optional: true)
                 .Build();
-            //BuildWebHost(args,config).Run();
-            BuildWebHost(args).Run();
-        }
 
-        public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
+            IWebHostBuilder builder = WebHost.CreateDefaultBuilder(args)
                 .UseKestrel()
+                .UseConfiguration(config)
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
-                .UseStartup<Startup>()
-                .Build();
+                .UseStartup<Startup>();
 
-        //public static IWebHost BuildWebHost(string[] args, IConfigurationRoot config) =>
-        //    WebHost.CreateDefaultBuilder(args)
-        //        .UseKestrel()
-        //        .UseConfiguration(config)
-        //        .UseContentRoot(Directory.GetCurrentDirectory())
-        //        .UseIISIntegration()
-        //        .UseStartup<Startup>()
-        //        .Build();
+            return builder.Build();
+        }
     }
 }

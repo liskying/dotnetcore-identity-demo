@@ -33,9 +33,8 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>    
-                <!--添加登录信息-->
-                @Html.Partial("_LoginPartial")
+                </ul>
+                @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>
     </nav>
