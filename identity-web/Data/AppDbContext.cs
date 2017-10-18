@@ -49,9 +49,6 @@ namespace identity_web.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
 
-            base.OnModelCreating(builder);
-            
-            
             builder.Entity<Post>().HasKey(e => e.Id);
             builder.Entity<Blog>().HasKey(e => e.Id);
             builder.Entity<TyUser>().HasKey(e => e.Id);
@@ -72,6 +69,9 @@ namespace identity_web.Data
             builder.Entity<TyUserToken>().Property(e=>e.Id).HasMaxLength(36);
 
             builder.Entity<Post>().HasOne(e => e.Blog).WithMany(e => e.Posts).HasForeignKey(e => e.BlogId);
+
+            
+            base.OnModelCreating(builder);
 
         }
     }

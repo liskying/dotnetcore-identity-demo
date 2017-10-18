@@ -14,6 +14,7 @@ namespace identityweb.Migrations
     [Migration("20171018135715_InitialDb")]
     partial class InitialDb
     {
+        
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618

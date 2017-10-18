@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
+
 namespace identityweb.Migrations
 {
     [DbContext(typeof(AppDbContext))]
