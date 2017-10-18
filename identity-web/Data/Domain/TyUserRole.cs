@@ -13,6 +13,7 @@ namespace identity_web.Data.Domain
     [Table("TyUserRole")]
     public class TyUserRole : IdentityUserRole<string>
     {
+        
         /// <summary>
         /// 角色ID
         /// </summary>
