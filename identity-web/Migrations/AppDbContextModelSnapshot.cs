@@ -23,7 +23,8 @@ namespace identityweb.Migrations
             modelBuilder.Entity("identity_web.Data.Domain.Blog", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(36);
 
                     b.Property<int>("Rating");
 
@@ -37,7 +38,8 @@ namespace identityweb.Migrations
             modelBuilder.Entity("identity_web.Data.Domain.Post", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(36);
 
                     b.Property<int>("BlogId");
 
@@ -55,7 +57,8 @@ namespace identityweb.Migrations
             modelBuilder.Entity("identity_web.Data.Domain.TyRole", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(36);
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
@@ -78,7 +81,8 @@ namespace identityweb.Migrations
             modelBuilder.Entity("identity_web.Data.Domain.TyRoleClaim", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(36);
 
                     b.Property<string>("ClaimType");
 
@@ -97,7 +101,8 @@ namespace identityweb.Migrations
             modelBuilder.Entity("identity_web.Data.Domain.TyUser", b =>
                 {
                     b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(36);
 
                     b.Property<int>("AccessFailedCount");
 
@@ -147,7 +152,8 @@ namespace identityweb.Migrations
             modelBuilder.Entity("identity_web.Data.Domain.TyUserClaim", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(36);
 
                     b.Property<string>("ClaimType");
 
@@ -165,18 +171,24 @@ namespace identityweb.Migrations
 
             modelBuilder.Entity("identity_web.Data.Domain.TyUserLogin", b =>
                 {
-                    b.Property<string>("LoginProvider");
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(36);
 
-                    b.Property<string>("ProviderKey");
-
-                    b.Property<string>("Id");
+                    b.Property<string>("LoginProvider")
+                        .IsRequired();
 
                     b.Property<string>("ProviderDisplayName");
+
+                    b.Property<string>("ProviderKey")
+                        .IsRequired();
 
                     b.Property<string>("UserId")
                         .IsRequired();
 
-                    b.HasKey("LoginProvider", "ProviderKey");
+                    b.HasKey("Id");
+
+                    b.HasAlternateKey("LoginProvider", "ProviderKey");
 
                     b.HasIndex("UserId");
 
@@ -189,8 +201,6 @@ namespace identityweb.Migrations
 
                     b.Property<string>("RoleId");
 
-                    b.Property<string>("Id");
-
                     b.HasKey("UserId", "RoleId");
 
                     b.HasIndex("RoleId");
@@ -200,17 +210,24 @@ namespace identityweb.Migrations
 
             modelBuilder.Entity("identity_web.Data.Domain.TyUserToken", b =>
                 {
-                    b.Property<string>("UserId");
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(36);
 
-                    b.Property<string>("LoginProvider");
+                    b.Property<string>("LoginProvider")
+                        .IsRequired();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
-                    b.Property<string>("Id");
+                    b.Property<string>("UserId")
+                        .IsRequired();
 
                     b.Property<string>("Value");
 
-                    b.HasKey("UserId", "LoginProvider", "Name");
+                    b.HasKey("Id");
+
+                    b.HasAlternateKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
                 });

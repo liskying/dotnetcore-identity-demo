@@ -49,20 +49,28 @@ namespace identity_web.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
 
+            base.OnModelCreating(builder);
+            
             builder.Entity<Post>().HasKey(e => e.Id);
             builder.Entity<Blog>().HasKey(e => e.Id);
             builder.Entity<TyUser>().HasKey(e => e.Id);
-
-            builder.Entity<TyUserRole>().HasKey(e => e.Id);
-            builder.Entity<TyUserLogin>().HasKey(e => new { e.LoginProvider, e.ProviderKey });
+            builder.Entity<TyUserLogin>().HasKey(e => e.Id);
             builder.Entity<TyRole>().HasKey(e => e.Id);
             builder.Entity<TyRoleClaim>().HasKey(e => e.Id);
             builder.Entity<TyUserClaim>().HasKey(e => e.Id);
-            builder.Entity<TyUserToken>().HasKey(e => new { e.Id, e.LoginProvider, e.Name });
+            builder.Entity<TyUserToken>().HasKey(e => e.Id);
+
+            builder.Entity<Post>().Property(e=>e.Id).HasMaxLength(36);
+            builder.Entity<Blog>().Property(e=>e.Id).HasMaxLength(36);
+            builder.Entity<TyUser>().Property(e=>e.Id).HasMaxLength(36);
+            builder.Entity<TyUserLogin>().Property(e=>e.Id).HasMaxLength(36);
+            builder.Entity<TyRole>().Property(e=>e.Id).HasMaxLength(36);
+            builder.Entity<TyRoleClaim>().Property(e=>e.Id).HasMaxLength(36);
+            builder.Entity<TyUserClaim>().Property(e=>e.Id).HasMaxLength(36);
+            builder.Entity<TyUserToken>().Property(e=>e.Id).HasMaxLength(36);
 
             builder.Entity<Post>().HasOne(e => e.Blog).WithMany(e => e.Posts).HasForeignKey(e => e.BlogId);
 
-            base.OnModelCreating(builder);
         }
     }
 }

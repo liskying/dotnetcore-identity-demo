@@ -14,10 +14,6 @@ namespace identity_web.Data.Domain
     public class TyUserRole : IdentityUserRole<string>
     {
         /// <summary>
-        /// Id
-        /// </summary>
-        public string Id { get; set; }
-        /// <summary>
         /// 角色ID
         /// </summary>
         public override string RoleId { get => base.RoleId; set => base.RoleId = value; }
