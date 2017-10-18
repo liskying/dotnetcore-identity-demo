@@ -18,16 +18,25 @@ namespace identity_web
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("hosting.json", optional: true)
                 .Build();
-            BuildWebHost(args,config).Run();
+            //BuildWebHost(args,config).Run();
+            BuildWebHost(args).Run();
         }
 
-        public static IWebHost BuildWebHost(string[] args,IConfigurationRoot config) =>
+        public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseKestrel()
-                .UseConfiguration(config)
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
                 .Build();
+
+        //public static IWebHost BuildWebHost(string[] args, IConfigurationRoot config) =>
+        //    WebHost.CreateDefaultBuilder(args)
+        //        .UseKestrel()
+        //        .UseConfiguration(config)
+        //        .UseContentRoot(Directory.GetCurrentDirectory())
+        //        .UseIISIntegration()
+        //        .UseStartup<Startup>()
+        //        .Build();
     }
 }

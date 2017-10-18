@@ -55,7 +55,8 @@ namespace identity_web.db
         /// <summary>
         /// 认证错误码
         /// </summary>
-        public DbSet<IdentityError> IdentityErrors { get; set; }
+        ///public DbSet<IdentityError> IdentityErrors { get; set; }
+
 
         /// <summary>
         /// 构造函数
@@ -80,7 +81,18 @@ namespace identity_web.db
         /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            modelBuilder.Entity<Post>().HasKey(e=>e.Id);
+            modelBuilder.Entity<Blog>().HasKey(e=>e.Id);
+            modelBuilder.Entity<TyUser>().HasKey(e=>e.Id);
+            modelBuilder.Entity<TyUserRole>().HasKey(e=>e.Id);
+            modelBuilder.Entity<TyUserLogin>().HasKey(e=>e.Id);
+            modelBuilder.Entity<TyRole>().HasKey(e=>e.Id);
+            modelBuilder.Entity<TyRoleClaim>().HasKey(e=>e.Id);
+            modelBuilder.Entity<TyUserClaim>().HasKey(e=>e.Id);
+
             modelBuilder.Entity<Post>().HasOne(e => e.Blog).WithMany(e => e.Posts).HasForeignKey(e => e.BlogId);
+                                 
             base.OnModelCreating(modelBuilder);
         }
     }

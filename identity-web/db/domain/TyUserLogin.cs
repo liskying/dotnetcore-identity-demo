@@ -10,6 +10,12 @@ namespace identity_web.db.domain
     /// </summary>
     public class TyUserLogin : Microsoft.AspNetCore.Identity.IdentityUserLogin<string>
     {
+        
+        /// <summary>
+        /// Id
+        /// </summary>
+        public string Id{get;set;}
+
         /// <summary>
         /// 第三方登录提供者
         /// </summary>

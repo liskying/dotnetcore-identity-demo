@@ -4,8 +4,10 @@
     <UserSecretsId>identity-web-ce345b64-19cf-4972-b34f-d16f2e7976ed</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Repository\IEmailSender.cs" />
-    <Compile Remove="Repository\Impl\EmailSenderImpl.cs" />
+    <Compile Remove="Repository\**" />
+    <Content Remove="Repository\**" />
+    <EmbeddedResource Remove="Repository\**" />
+    <None Remove="Repository\**" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MailKit" Version="1.18.1.1" />
@@ -29,8 +31,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Migrations\" />
-    <Folder Include="Repository\" />
-    <Folder Include="Repository\Impl\" />
   </ItemGroup>
   <ItemGroup>
     <Content Update="appsettings.json">

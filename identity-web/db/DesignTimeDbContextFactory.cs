@@ -17,7 +17,7 @@ namespace identity_web.db
               .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
               .AddJsonFile("appsettings.json")
               .Build();
-            var conn = configuration.GetConnectionString("‌​DefaultConnection");
+            var conn=configuration.GetConnectionString("DefaultConnection");
             Console.WriteLine(conn);
             builder.UseSqlite(conn);
             return new AppDbContext(builder.Options);

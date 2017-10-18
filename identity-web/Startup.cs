@@ -29,9 +29,10 @@ namespace identity_web
         {
             //_testSecret = Configuration["MySecret"];
 
+            var connStr=Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<AppDbContext>(options =>
             {
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
+                options.UseSqlite(connStr);
             });
 
             services.AddIdentity<TyUser, TyRole>(
