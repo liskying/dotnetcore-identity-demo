@@ -11,7 +11,7 @@ namespace identity_web.Data.Domain
     /// 角色
     /// </summary>
     [Table("TyRole")]
-    public class TyRole : IdentityRole
+    public class TyRole : IdentityRole<string>
     {
     }
 }
