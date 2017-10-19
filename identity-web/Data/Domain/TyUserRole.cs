@@ -13,10 +13,7 @@ namespace identity_web.Data.Domain
     [Table("TyUserRole")]
     public class TyUserRole : IdentityUserRole<string>
     {
-        /// <summary>
-        /// Id
-        /// </summary>
-        public string Id { get; set; }
+        
         /// <summary>
         /// 角色ID
         /// </summary>
